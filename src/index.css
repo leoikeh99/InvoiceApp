@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon-btn {
+  @apply flex items-center gap-3 p-2 pr-4 rounded-3xl text-bg2 font-bold text-xs;
+}
+
+.status {
+  @apply flex py-3 w-bar h-10 items-center justify-center gap-2 font-bold text-xs relative;
+}
