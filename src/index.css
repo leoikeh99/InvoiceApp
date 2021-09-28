@@ -10,3 +10,27 @@
 .status {
   @apply flex py-3 w-bar h-10 items-center justify-center gap-2 font-bold text-xs relative;
 }
+
+.checkbox {
+  @apply h-4 w-4 bg-gray3 -mt-1 border border-purple rounded-sm flex items-center justify-center;
+}
+
+.checkbox.active {
+  @apply bg-purple;
+}
+
+.checkbox.active img {
+  @apply mb-0.5 mr-0.5 block;
+}
+
+.checkbox img {
+  @apply hidden;
+}
+
+.label {
+  @apply block text-gray4 text-xs mb-2;
+}
+
+.input {
+  @apply block w-full h-12 border border-input px-5 rounded mb-6;
+}

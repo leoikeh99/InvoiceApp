@@ -1,4 +1,9 @@
-import { CREATE_INVOICE, EDIT_INVOICE, DELETE_INVOICE } from "./types";
+import {
+  CREATE_INVOICE,
+  EDIT_INVOICE,
+  DELETE_INVOICE,
+  TOGGLE_FILTER,
+} from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +11,12 @@ export default (state, action) => {
       return {
         ...state,
         invoices: [...state.invoices, action.payload],
+      };
+
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        filter: state.filter === action.payload ? null : action.payload,
       };
     default:
       return {

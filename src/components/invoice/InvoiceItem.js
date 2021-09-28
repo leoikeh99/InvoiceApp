@@ -1,9 +1,15 @@
 import React from "react";
 import rightArrow from "../../images/icon-arrow-right.svg";
+import { motion } from "framer-motion";
 
 const InvoiceItem = ({ invoice: { id, due, name, amount, status } }) => {
   return (
-    <div className="bg-bg2 h-item px-8 rounded-lg shadow-item cursor-pointer border-2 border-bg2 hover:border-purple box-border transition duration-300 mb-4">
+    <motion.div
+      className="bg-bg2 h-item px-8 rounded-lg shadow-item cursor-pointer border-2 border-bg2 hover:border-purple box-border transition duration-300 mb-4"
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      whileHover={{ scale: 0.98, transition: { duration: 0.01 } }}
+      transition={{ duration: 0.2, type: "spring", stiffness: 500 }}>
       <ul className="list-none grid items-center grid-cols-item h-full">
         <li className="font-bold text-text1 text-xs">
           <span className="text-text2">#</span>
@@ -44,7 +50,7 @@ const InvoiceItem = ({ invoice: { id, due, name, amount, status } }) => {
           <img src={rightArrow} alt="" />
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 };
 export default InvoiceItem;

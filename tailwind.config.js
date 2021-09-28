@@ -17,6 +17,7 @@ module.exports = {
       },
       purple: {
         DEFAULT: "#7C5DFA",
+        hover: "#9277FF",
       },
       bg1: {
         DEFAULT: "#F8F8FB",
@@ -41,6 +42,13 @@ module.exports = {
       gray2: {
         DEFAULT: "#494E6E",
       },
+      gray3: "#DFE3FA",
+      gray4: "#7E88C3",
+      input: {
+        DEFAULT: "#DFE3FA",
+        dark: "#252945",
+      },
+      black: "#000",
     },
     extend: {
       fontFamily: {
@@ -54,20 +62,30 @@ module.exports = {
         homeTop: "72px",
         homeBottom: "65px",
       },
+      width: {
+        filter: "192px",
+        form1: "719px",
+      },
       maxWidth: {
-        container1: "730px",
+        container1: "742px",
+        container2: "85%",
       },
       fontSize: {
         lg: "32px",
+        lg2: "24px",
       },
       gridTemplateColumns: {
         item: "0.7fr 1fr 1fr 1fr 104px 20px",
       },
       boxShadow: {
         item: "0px 10px 10px -10px rgba(72, 84, 159, 0.100397)",
+        filter: "0px 10px 20px rgba(72, 84, 159, 0.25)",
       },
       height: {
         item: "72px",
+      },
+      inset: {
+        "-30": "-120px",
       },
     },
   },
