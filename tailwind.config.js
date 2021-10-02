@@ -18,6 +18,7 @@ module.exports = {
       purple: {
         DEFAULT: "#7C5DFA",
         hover: "#9277FF",
+        light: "#F9FAFE",
       },
       bg1: {
         DEFAULT: "#F8F8FB",
@@ -44,6 +45,8 @@ module.exports = {
       },
       gray3: "#DFE3FA",
       gray4: "#7E88C3",
+      gray5: "#777F98",
+      red: "#EC5757",
       input: {
         DEFAULT: "#DFE3FA",
         dark: "#252945",
@@ -72,14 +75,19 @@ module.exports = {
       },
       fontSize: {
         lg: "32px",
+        lg1: "18px",
         lg2: "24px",
+        xxs: "10px",
       },
       gridTemplateColumns: {
         item: "0.7fr 1fr 1fr 1fr 104px 20px",
+        itemList: "3fr 0.7fr 1.7fr 1.7fr",
       },
       boxShadow: {
         item: "0px 10px 10px -10px rgba(72, 84, 159, 0.100397)",
         filter: "0px 10px 20px rgba(72, 84, 159, 0.25)",
+        shadow1:
+          "linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%)",
       },
       height: {
         item: "72px",

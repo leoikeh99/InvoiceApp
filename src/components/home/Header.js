@@ -3,7 +3,7 @@ import arrowDown from "../../images/icon-arrow-down.svg";
 import plus from "../../images/icon-plus.svg";
 import StatusFilter from "./StatusFilter";
 
-const Header = ({ show, setShow }) => {
+const Header = ({ show, setShow, setShowForm }) => {
   return (
     <header className="flex justify-between items-center  pt-homeTop pb-homeBottom">
       <div>
@@ -19,7 +19,9 @@ const Header = ({ show, setShow }) => {
           </span>
           <StatusFilter show={show} />
         </button>
-        <button className="icon-btn bg-purple hover:bg-purple-hover">
+        <button
+          className="icon-btn bg-purple hover:bg-purple-hover cursor-pointer"
+          onClick={() => setShowForm(true)}>
           <span className="bg-bg2 h-8 w-8 rounded-full flex items-center justify-center">
             <img src={plus} alt="" />
           </span>

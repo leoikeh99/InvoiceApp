@@ -7,14 +7,17 @@ import { InvoiceContext } from "../context/InvoiceContext";
 
 const Home = () => {
   const [show, setShow] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const invoiceContext = useContext(InvoiceContext);
   const { filter } = invoiceContext;
 
   return (
     <div className="px-3">
-      <Header setShow={setShow} show={show} />
+      <Header setShow={setShow} show={show} setShowForm={setShowForm} />
       {!filter ? <InvoiceItemList /> : <FilteredInvoices />}
-      <CreateInvoiceForm />
+      {showForm && (
+        <CreateInvoiceForm showForm={showForm} setShowForm={setShowForm} />
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "react-datepicker/dist/react-datepicker";
 
 .icon-btn {
   @apply flex items-center gap-3 p-2 pr-4 rounded-3xl text-bg2 font-bold text-xs;
@@ -28,9 +29,29 @@
 }
 
 .label {
-  @apply block text-gray4 text-xs mb-2;
+  @apply flex text-gray4 text-xs mb-2 w-full justify-between;
+}
+
+.labelError {
+  @apply flex text-red text-xs mb-2 w-full justify-between;
 }
 
 .input {
-  @apply block w-full h-12 border border-input px-5 rounded mb-6;
+  @apply block w-full h-12 border border-input px-5 rounded mb-6 text-black text-xs font-bold;
+}
+
+.input2 {
+  @apply block w-full h-12 border border-input px-2 rounded mb-2 text-black text-xs font-bold;
+}
+
+.input2Error {
+  @apply block w-full h-12 border border-red px-2 rounded mb-2 text-black text-xs font-bold;
+}
+
+.formBody {
+  @apply fixed top-0 -left-0 z-30 w-form1 h-screen bg-bg2 rounded-tr-20 rounded-br-20 pl-bar pt-12 pb-24;
+}
+
+.overlay {
+  @apply fixed top-0 left-0 z-20 w-screen h-screen bg-black;
 }
