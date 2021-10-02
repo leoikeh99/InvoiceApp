@@ -9,7 +9,7 @@ const InvoiceItemList = () => {
   return (
     <ul>
       {invoices.map((invoice) => (
-        <InvoiceItem invoice={invoice} />
+        <InvoiceItem invoice={invoice} key={invoice.id} />
       ))}
     </ul>
   );

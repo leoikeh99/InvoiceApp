@@ -40,6 +40,10 @@
   @apply block w-full h-12 border border-input px-5 rounded mb-6 text-black text-xs font-bold;
 }
 
+.inputError {
+  @apply block w-full h-12 border border-red px-5 rounded mb-6 text-black text-xs font-bold;
+}
+
 .input2 {
   @apply block w-full h-12 border border-input px-2 rounded mb-2 text-black text-xs font-bold;
 }

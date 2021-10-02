@@ -1,9 +1,20 @@
-import { Field } from "formik";
+import { Field, getIn } from "formik";
 import React from "react";
 
 const FieldInput = ({ name, error }) => {
   return (
-    <Field name={name} className={`${!error ? "input2" : "input2Error"}`} />
+    <Field
+      name={name}
+      render={({ form }) => {
+        const error = getIn(form.errors, name);
+        const touch = getIn(form.touched, name);
+        return touch && error ? (
+          <Field name={name} className={"input2Error"} />
+        ) : (
+          <Field name={name} className={"input2"} />
+        );
+      }}
+    />
   );
 };
 

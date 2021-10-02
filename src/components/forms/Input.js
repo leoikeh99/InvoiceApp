@@ -19,7 +19,13 @@ const Input = ({ label, handleChange, name, placeholder, error }) => {
         </span>
       </label>
       <input
-        className="input placeholder-text1"
+        className={`${
+          error && typeof error === "string"
+            ? "inputError"
+            : error && error[name === "email" ? "mail" : name]
+            ? "inputError"
+            : "input"
+        } placeholder-text1`}
         type="text"
         onChange={handleChange}
         name={name}

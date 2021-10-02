@@ -10,39 +10,9 @@ const ItemList = ({ props, arrayHelpers }) => {
       {props.values.itemList.map((item, index) => (
         <div key={index}>
           <div className="grid grid-cols-itemList gap-2">
-            <FieldInput
-              name={`itemList[${index}].itemName`}
-              error={
-                props.errors.itemList &&
-                typeof props.errors.itemList !== "string" &&
-                props.errors.itemList[index] &&
-                props.touched.itemList[index]
-                  ? props.errors.itemList[index].itemName
-                  : null
-              }
-            />
-            <FieldInput
-              name={`itemList[${index}].qty`}
-              error={
-                props.errors.itemList &&
-                typeof props.errors.itemList !== "string" &&
-                props.errors.itemList[index] &&
-                props.touched.itemList[index]
-                  ? props.errors.itemList[index].qty
-                  : null
-              }
-            />
-            <FieldInput
-              name={`itemList[${index}].price`}
-              error={
-                props.errors.itemList &&
-                typeof props.errors.itemList !== "string" &&
-                props.errors.itemList[index] &&
-                props.touched.itemList[index]
-                  ? props.errors.itemList[index].price
-                  : null
-              }
-            />
+            <FieldInput name={`itemList[${index}].itemName`} />
+            <FieldInput name={`itemList[${index}].qty`} />
+            <FieldInput name={`itemList[${index}].price`} />
             <p className="w-full flex justify-between items-center text-text2 font-bold text-xs">
               {item.qty * item.price}
               <img
