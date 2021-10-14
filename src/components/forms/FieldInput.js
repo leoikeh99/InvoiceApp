@@ -1,7 +1,7 @@
 import { Field, getIn } from "formik";
 import React from "react";
 
-const FieldInput = ({ name, error }) => {
+const FieldInput = ({ name }) => {
   return (
     <Field
       name={name}

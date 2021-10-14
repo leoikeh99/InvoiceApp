@@ -5,12 +5,46 @@ import {
   TOGGLE_FILTER,
 } from "./types";
 
-export default (state, action) => {
+const InvoiceReducer = (state, action) => {
   switch (action.type) {
     case CREATE_INVOICE:
+      localStorage.setItem(
+        "invoices",
+        JSON.stringify([action.payload, ...state.invoices])
+      );
       return {
         ...state,
-        invoices: [...state.invoices, action.payload],
+        invoices: [action.payload, ...state.invoices],
+      };
+
+    case EDIT_INVOICE:
+      localStorage.setItem(
+        "invoices",
+        JSON.stringify(
+          state.invoices.map((invoice) =>
+            invoice.id === action.payload.id ? action.payload : invoice
+          )
+        )
+      );
+      return {
+        ...state,
+        invoices: state.invoices.map((invoice) =>
+          invoice.id === action.payload.id ? action.payload : invoice
+        ),
+      };
+
+    case DELETE_INVOICE:
+      localStorage.setItem(
+        "invoices",
+        JSON.stringify(
+          state.invoices.filter((invoice) => invoice.id !== action.payload)
+        )
+      );
+      return {
+        ...state,
+        invoices: state.invoices.filter(
+          (invoice) => invoice.id !== action.payload
+        ),
       };
 
     case TOGGLE_FILTER:
@@ -24,3 +58,5 @@ export default (state, action) => {
       };
   }
 };
+
+export default InvoiceReducer;

@@ -1,48 +1,36 @@
 import { createContext } from "react";
 import React, { useReducer } from "react";
 import InvoiceReducer from "./InvoiceReducer";
-import { CREATE_INVOICE, TOGGLE_FILTER } from "./types";
+import {
+  CREATE_INVOICE,
+  DELETE_INVOICE,
+  EDIT_INVOICE,
+  TOGGLE_FILTER,
+} from "./types";
+import data from "../data.json";
 
 const InvoiceContext = createContext();
 
 const InvoiceState = (props) => {
   const initialState = {
-    invoices: [
-      {
-        id: "RT3080",
-        due: "19 Aug 2020",
-        name: "Jensen Huang",
-        amount: "1,800.90",
-        status: "Paid",
-      },
-      {
-        id: "AC3940",
-        due: "12 Nov 2020",
-        name: "Leonard Ikeh",
-        amount: "1,200.90",
-        status: "Paid",
-      },
-      {
-        id: "LL1280",
-        due: "19 Sep 2020",
-        name: "Wayne Rooney",
-        amount: "900.90",
-        status: "Pending",
-      },
-      {
-        id: "VT8653",
-        due: "20 Aug 2020",
-        name: "Juan Mata",
-        amount: "300.90",
-        status: "Draft",
-      },
-    ],
+    invoices: localStorage.getItem("invoices")
+      ? JSON.parse(localStorage.getItem("invoices"))
+      : data,
     filter: null,
   };
+
   const [state, dispatch] = useReducer(InvoiceReducer, initialState);
 
-  const createInvoice = (invioce) => {
-    dispatch({ type: CREATE_INVOICE, payload: invioce });
+  const createInvoice = (invoice) => {
+    dispatch({ type: CREATE_INVOICE, payload: invoice });
+  };
+
+  const editInvoice = (invoice) => {
+    dispatch({ type: EDIT_INVOICE, payload: invoice });
+  };
+
+  const deleteInvoice = (id) => {
+    dispatch({ type: DELETE_INVOICE, payload: id });
   };
 
   const toggleFilter = (value) => {
@@ -55,6 +43,8 @@ const InvoiceState = (props) => {
         invoices: state.invoices,
         filter: state.filter,
         createInvoice,
+        editInvoice,
+        deleteInvoice,
         toggleFilter,
       }}>
       {props.children}

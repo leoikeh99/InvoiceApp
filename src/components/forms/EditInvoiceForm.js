@@ -2,27 +2,21 @@ import React, { useContext } from "react";
 import { InvoiceContext } from "../../context/InvoiceContext";
 import { motion } from "framer-motion";
 import { FieldArray, Formik } from "formik";
-import { initialFormValues, validationSchema } from "./data";
+import { validationSchema } from "./data";
 import Input from "./Input";
 import Terms from "./Terms";
 import ItemList from "./ItemList";
 import DatePicker from "./DatePicker";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
-import { genId } from "../../functions";
 import arrowLeft from "../../images/icon-arrow-left.svg";
 
-const CreateInvoiceForm = ({ setShowForm }) => {
+const CreateInvoiceForm = ({ setShowForm, invoice }) => {
   const invoiceContext = useContext(InvoiceContext);
-  const { createInvoice } = invoiceContext;
+  const { editInvoice } = invoiceContext;
 
-  const saveInvoice = (data) => {
-    createInvoice({ ...data, status: "Pending", id: genId() });
-    setShowForm(false);
-  };
-
-  const draftInvoice = (data) => {
-    createInvoice({ ...data, status: "Draft", id: genId() });
+  const saveInvoice = (values) => {
+    editInvoice(values);
     setShowForm(false);
   };
 
@@ -47,16 +41,22 @@ const CreateInvoiceForm = ({ setShowForm }) => {
             <img src={arrowLeft} alt="" className="mb-1" /> Go back
           </button>
           <h2 className="text-text1 dark:text-text1-dark font-bold text-lg2 mb-5 mobile2:mb-12 pl-3">
-            New Invoice
+            Edit <span className="text-text2 dark:text-text2-dark">#</span>
+            {invoice.id}
           </h2>
 
           <Formik
-            initialValues={initialFormValues}
+            initialValues={invoice}
             onSubmit={(values) => saveInvoice(values)}
             validationSchema={validationSchema}>
             {(props) => (
               <SimpleBar style={{ maxHeight: "100%" }}>
-                <form className="h-full overflow-y-auto px-3 mb-5" action="">
+                <form
+                  className="h-full overflow-y-auto px-3 mb-5"
+                  action=""
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                  }}>
                   <div className="mb-12">
                     <p className="text-purple font-bold text-xs mb-6">
                       Bill From
@@ -147,7 +147,10 @@ const CreateInvoiceForm = ({ setShowForm }) => {
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-6 mt-4">
-                    <DatePicker props={props} invoiceDate={new Date()} />
+                    <DatePicker
+                      props={props}
+                      invoiceDate={invoice.invoiceDate}
+                    />
                     <Terms props={props} />
                   </div>
                   <div className="mb-8">
@@ -173,27 +176,19 @@ const CreateInvoiceForm = ({ setShowForm }) => {
                       </p>
                     )}
                 </form>
-                <div className="text-xs flex justify-between items-center sticky bottom-0 pb-3.5 left-0 w-full bg-bg2 dark:bg-bg1-dark h-28 shadow-shadow1 px-3">
+                <div className="text-xs flex justify-end items-center gap-2 sticky bottom-0 pb-3.5 left-0 w-full bg-bg2 dark:bg-bg1-dark h-20 mobile2:h-28 shadow-shadow1 px-3">
                   <button
                     className="font-bold text-purple bg-purple-light rounded-3xl py-4 mobile2:px-6 px-4 mobile1:text-xs text-xxs"
                     type="button"
                     onClick={() => setShowForm(false)}>
-                    Discard
+                    Cancel
                   </button>
-                  <div>
-                    <button
-                      className="font-bold text-text2 dark:text-gray3 bg-bg3 rounded-3xl py-4 mobile2:px-6 px-4 mr-2 mobile1:text-xs text-xxs"
-                      type="button"
-                      onClick={() => draftInvoice(props.values)}>
-                      Save as Draft
-                    </button>
-                    <button
-                      className="font-bold text-white dark:text-text1-dark bg-purple rounded-3xl py-4 mobile2:px-6 px-4 mobile1:text-xs text-xxs"
-                      type="button"
-                      onClick={(e) => props.handleSubmit()}>
-                      Save & Send
-                    </button>
-                  </div>
+                  <button
+                    className="font-bold text-text1-dark bg-purple rounded-3xl py-4 mobile2:px-6 px-4 mobile1:text-xs text-xxs"
+                    type="button"
+                    onClick={() => props.handleSubmit()}>
+                    Save Changes
+                  </button>
                 </div>
               </SimpleBar>
             )}

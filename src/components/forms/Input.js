@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, handleChange, name, placeholder, error }) => {
+const Input = ({ label, handleChange, name, placeholder, error, value }) => {
   return (
     <div>
       <label
@@ -25,11 +25,12 @@ const Input = ({ label, handleChange, name, placeholder, error }) => {
             : error && error[name === "email" ? "mail" : name]
             ? "inputError"
             : "input"
-        } placeholder-text1`}
+        } placeholder-text1 dark:placeholder-text1-dark`}
         type="text"
         onChange={handleChange}
         name={name}
         placeholder={placeholder && placeholder}
+        value={value}
       />
     </div>
   );

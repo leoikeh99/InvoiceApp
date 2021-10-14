@@ -10,7 +10,7 @@ const FilteredInvoices = () => {
       {invoices
         .filter((invoice) => filter === invoice.status)
         .map((invoice) => (
-          <InvoiceItem invoice={invoice} />
+          <InvoiceItem invoice={invoice} key={invoice.id} />
         ))}
     </>
   );

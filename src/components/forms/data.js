@@ -12,12 +12,12 @@ const initialFormValues = {
     country: "",
   },
   invoiceDate: moment().format("DD MM yyyy"),
-  terms: "Next 1 Day",
+  terms: 1,
   desc: "",
   itemList: [],
 };
 
-const terms = ["Next 1 Day", "Next 7 Days", "Next 14 Days", "Next 30 Days"];
+const terms = [1, 7, 14, 30];
 
 const validationSchema = Yup.object().shape({
   from: Yup.object().shape({
