@@ -4,7 +4,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://agile-temple-46662.herokuapp.com/">
+    <a href="https://invoiceapp1000.netlify.app/">
       Demo
     </a> 
   </h3>
