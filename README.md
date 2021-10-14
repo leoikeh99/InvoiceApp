@@ -48,13 +48,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/leoikeh99/Shoppingify
+$ git clone https://github.com/leoikeh99/InvoiceApp
 
 # Install dependencies
 $ npm install
-
-# set up files
-- Add a default.json file in the config folder having mongoURI and jwtSecret data available
 
 # Run the app
 $ npm dev
